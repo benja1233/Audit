@@ -1,0 +1,7 @@
+Contracts => has all smart contracts. LemonToken is the NFTs contracts, LemonGenesis is the other NFTs contract. 
+             Juice is the ERC20 token contract.
+
+Scripts => Contain two of the deploy Scripts files. The first one will deploy LemonToken and LemonGenesis. The second script will deploy
+           Juice contract. 
+
+Test => test folder contains 3 tests. LemonToken test and LemonGenesis test. 
