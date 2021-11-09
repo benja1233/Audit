@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 interface IJuice {
     function burn(address _from, uint256 _amount) external;
-
+    
     function updateReward(address _from, address _to) external;
 }
 
@@ -18,17 +18,21 @@ contract One is ERC721Enumerable, Ownable {
     string public baseURI;
     bytes32 public baseExtension = ".json";
     string public notRevealedUri;
+
     uint256 public cost = 0.00 ether;
     uint256 public maxSupply = 10000;
     uint256 public maxMintAmount = 1;
     uint256 public nftPerAddressLimit = 1;
     uint256 public wlMaxPerTx = 1;
     uint256 public wlMaxPerWallet = 1;
+
     bool public paused = false;
     bool public revealed = false;
     bool public onlyWhitelisted = true;
+
     address[] public whitelistedAddresses;
     address juiceAdress;
+
     mapping(address => uint256) public addressMintedBalance;
 
     IJuice public Juice;
@@ -51,7 +55,7 @@ contract One is ERC721Enumerable, Ownable {
 
     // @dev function to mint an NFT
     // @param _mintAmount => Quantity to mint
-    //
+    // @moreInfo => If the user is WhiteListed will have another Tx and Wallet limit
     function mint(uint256 _mintAmount) public payable {
         require(!paused, "the contract is paused");
         uint256 supply = totalSupply();
@@ -97,11 +101,6 @@ contract One is ERC721Enumerable, Ownable {
         return false;
     }
 
-    /*
-  function isWhitelisted(address _user) public view returns (bool) {
-    return whitelistedChecker[_user];
-  }
-  */
 
     // @dev Function that Burns your Lemmy. Everyone Owner of Lemmy can call this function and say "Sayonara Baby".
     // @param _tokenId => takes the parameter of your TokenId.

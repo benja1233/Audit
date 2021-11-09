@@ -95,7 +95,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
             1;
     }
 
-    // @dev function that will give the total amount that a user can Claim, it includes the Genesis and Normal
+    // @dev function that will give the total amount that a user can Claim from the Normal Collection
     // @param the parameter is the user address
     function getTotalClaimableFromLemmys(address user)
         external
@@ -105,6 +105,8 @@ contract Three is ERC20, Ownable, ERC20Burnable {
         return rewards[user] + getPendingReward(user);
     }
 
+    // @dev function that will give the total amount that a user can Claim from the Genesis Collection
+    // @param the parameter is the user address
     function getTotalClaimableFromGenesis(address user)
         external
         view
@@ -114,6 +116,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
     }
 
     // ToggleReward the $JUICE
+    // Pause the production of tokens
     function toggleReward() public onlyOwner {
         pauseJuiceMachine = !pauseJuiceMachine;
     }
