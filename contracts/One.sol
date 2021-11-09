@@ -52,6 +52,7 @@ contract One is ERC721Enumerable, Ownable {
 
     // @dev function to mint an NFT
     // @param _mintAmount => Quantity to mint
+    //
     function mint(uint256 _mintAmount) public payable {
         require(!paused, "the contract is paused");
         uint256 supply = totalSupply();
