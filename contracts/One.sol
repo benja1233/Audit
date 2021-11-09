@@ -25,7 +25,6 @@ contract One is ERC721Enumerable, Ownable {
     uint256 public wlMaxPerTx = 1;
     uint256 public wlMaxPerWallet = 1;
     bool public paused = false;
-    bool public TheGenesisAreSleeping = true;
     bool public revealed = false;
     bool public onlyWhitelisted = true;
     address[] public whitelistedAddresses;
@@ -35,7 +34,7 @@ contract One is ERC721Enumerable, Ownable {
     IJuice public Juice;
 
     constructor(string memory _initBaseURI, string memory _initNotRevealedUri)
-        ERC721("Lemmys", "LEM")
+        ERC721("TokenName", "TKN")
     {
         setBaseURI(_initBaseURI);
         setNotRevealedURI(_initNotRevealedUri);

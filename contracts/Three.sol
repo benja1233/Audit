@@ -35,7 +35,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
     iLemonToken public lemonToken;
     iLemonGenesis public lemonGenesis;
 
-    constructor(address lemonTokenAddress) ERC20("LemonJuice", "JUICE") {
+    constructor(address lemonTokenAddress) ERC20("TokenName", "TKN") {
         lemonToken = iLemonToken(lemonTokenAddress); // necesito el address del contract de LemonToken
         START = block.timestamp; // Arranca cuando se sube el contrato
     }

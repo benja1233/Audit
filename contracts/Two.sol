@@ -31,7 +31,7 @@ contract Two is ERC721Enumerable, Ownable {
     iJuicee public Juice;
 
     // Contrusuctor
-    constructor(string memory _initBaseURI) ERC721("LemonGenesis", "LGE") {
+    constructor(string memory _initBaseURI) ERC721("TokenName", "TKN") {
     }
 
     // INTERNAL FUNCTIONS
