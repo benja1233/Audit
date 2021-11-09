@@ -6,3 +6,6 @@ scripts =>
     npx hardhat run scripts/deployJuice.js --network localhost 
 compile =>
     npx hardhat compile
+
+# File-description
+This file contains the information about all files and also a background of the project
