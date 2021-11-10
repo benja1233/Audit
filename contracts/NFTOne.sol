@@ -103,7 +103,7 @@ contract One is ERC721Enumerable, Ownable {
     }
 
 
-    // @dev Function that Burns your Lemmy. Everyone Owner of Lemmy can call this function and say "Sayonara Baby".
+    // @dev Function that Burns your NFT. Everyone Owner of NFT can call this function and say "Sayonara Baby".
     // @param _tokenId => takes the parameter of your TokenId.
     function burnYourFriend(uint256 _tokenId) public returns (string memory) {
         require(ownerOf(_tokenId) == msg.sender, "You are not the owner");
@@ -114,10 +114,10 @@ contract One is ERC721Enumerable, Ownable {
             _tokenId
         );
         // Eliminate a friend
-        return "You just burn your Lemmy Friend :( ";
+        return "You just burn your .... Friend :( ";
     }
 
-    // @dev Function that gives the amount of Lemmys that the Owner has.
+    // @dev Function that gives the amount of NFTs that the Owner has.
     // @param _owner => takes the Owner Address.
     // @return the function returns an array of the tokenIDs that the Owners has.
     function walletOfOwner(address _owner) public view returns (uint256[] memory) {
@@ -131,7 +131,7 @@ contract One is ERC721Enumerable, Ownable {
 
     // @dev Function that sets the TokenURI for each tokenId
     // If the revealed = false the TokenURI will be the metadata of a lovely Loda
-    // If the revealed = true the TokenURI will lead you to your crazy Lemmy/s
+    // If the revealed = true the TokenURI will lead you to your crazy NFT/s
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         require(
             _exists(tokenId),
@@ -184,7 +184,7 @@ contract One is ERC721Enumerable, Ownable {
     }    
 
     // Sets the contractc of $Currency
-    function setLemonCurrencyMachine(address _CurrencyAddress) external onlyOwner {
+    function setNFTCurrencyMachine(address _CurrencyAddress) external onlyOwner {
         Currency = iCurrency(_CurrencyAddress);
     }
 

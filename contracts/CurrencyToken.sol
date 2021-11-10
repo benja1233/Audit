@@ -32,8 +32,8 @@ contract Three is ERC20, Ownable, ERC20Burnable {
     iGenToken public nftGen;
 
     constructor(address nftTokenAddress) ERC20("TokenName", "TKN") {
-        nftToken = iNftToken(nftTokenAddress); // necesito el address del contract de nftToken
-        START = block.timestamp; // Arranca cuando se sube el contrato
+        nftToken = iNftToken(nftTokenAddress); // need address of contract nftToken
+        START = block.timestamp; // Starts when deployed
     }
 
     // Updates rewards when transfering

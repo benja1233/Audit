@@ -45,7 +45,7 @@ contract Two is ERC721Enumerable, Ownable {
 
     // @dev function to mint an NFT
     // @param _mintAmount => Quantity to mint
-    function getYourOGLemmys(uint256 _mintAmount) public payable {
+    function getYourOGNFTs(uint256 _mintAmount) public payable {
         require(!paused, "the contract is paused");
         uint256 supply = totalSupply();
         require(_mintAmount > 0, "need to mint at least 1 NFT");
@@ -68,7 +68,7 @@ contract Two is ERC721Enumerable, Ownable {
         }
     }
 
-    // @dev Function that Burns your Lemmy. Everyone Owner of Lemmy can call this function and say "Sayonara Baby".
+    // @dev Function that Burns your NFT. Everyone Owner of NFT can call this function and say "Sayonara Baby".
     // @param _tokenId => takes the parameter of your TokenId.
     function burnYourFriend(uint256 _tokenId) public returns (string memory) {
         require(ownerOf(_tokenId) == msg.sender, "You are not the owner");
@@ -79,10 +79,10 @@ contract Two is ERC721Enumerable, Ownable {
             _tokenId
         );
         //balanceOfTheChosenOne[msg.sender]--;
-        return "You just burn your Lemmy Friend :( ";
+        return "You just burn your .... Friend :( ";
     }
 
-    // @dev Function that gives the amount of Lemmys that the Owner has.
+    // @dev Function that gives the amount of NFTs that the Owner has.
     // @param _owner => takes the Owner Address.
     // @return the function returns an array of the tokenIDs that the Owners has.
     function walletOfOwner(address _owner)
@@ -139,7 +139,7 @@ contract Two is ERC721Enumerable, Ownable {
 
     // ONLY OWNER FUNCTIONS
 
-    function setLemonCurrencyMachine(address _CurrencyAddress) external onlyOwner {
+    function setNFTsCurrencyMachine(address _CurrencyAddress) external onlyOwner {
         Currency = iCurrency(_CurrencyAddress);
     }
 
