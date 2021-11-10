@@ -16,7 +16,7 @@ interface iGenToken {
   function balanceOf(address owner) external view returns (uint256);
 }
 
-contract Three is ERC20, Ownable, ERC20Burnable {
+contract CurrenyToken is ERC20, Ownable, ERC20Burnable {
     // uint256
     uint256 public constant BASE_RATE = 3 ether;
     uint256 public constant BASE_RATE_OP = 6 ether;
