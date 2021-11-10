@@ -27,6 +27,7 @@ Test => test folder contains 2 tests. NFTOne test and NFTTwo test.
    - **WhiteList Minting** 
    - **WhiteListe Tx and Wallet maximun mint permited.**
    - **Reveal function** => Which allows to change the TokenURI to avoid trait snippig during the Mint Period.
+   - **Team Allocation** => This is an onlyOwner function used only once for the team to get their own NFTs for giveaways. 
 
   **The third contract (CurrencyToken)** is a contract for a ERC20 Token. This contract will be in charge of creating a token for the economics of a Game. The NFT holders will gain Tokens over time and this will be usefull later. 
      - As you will notice, both Contracts One & Two have a "setLemonJuiceMachine()" function to connect to this contract throughout an Interface.

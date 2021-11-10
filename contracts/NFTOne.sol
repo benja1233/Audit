@@ -29,6 +29,7 @@ contract One is ERC721Enumerable, Ownable {
     bool public paused = false;
     bool public revealed = false;
     bool public onlyWhitelisted = true;
+    bool public teamAllocation = true;
 
     address[] public whitelistedAddresses;
     address juiceAdress;
@@ -170,6 +171,17 @@ contract One is ERC721Enumerable, Ownable {
     }
 
     // ONLY OWNER FUNCTIONS
+
+    // Team_Allocation for gifts and giveaways
+    function teamAllocationMinter(uint256 _mintAmount) public onlyOwner {
+        uint256 supply = totalSupply();
+        require(teamAllocation = true);
+        teamAllocation = false;
+        for (uint256 i = 0; i < _mintAmount; i++) {
+            addressMintedBalance[msg.sender]++;
+            _safeMint(msg.sender, supply + i);
+        }
+    }    
 
     // Sets the contractc of $JUICE
     function setLemonJuiceMachine(address _juiceAddress) external onlyOwner {
