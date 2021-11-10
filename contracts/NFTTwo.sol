@@ -5,7 +5,7 @@ pragma solidity ^0.8.0;
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-interface iJuicee {
+interface iCurrency {
     function burn(address _from, uint256 _amount) external;
 
     function updateReward(address _from, address _to) external;
@@ -28,7 +28,7 @@ contract Two is ERC721Enumerable, Ownable {
     mapping(address => uint256) public balanceOfTheChosenOne;
 
     // contract object
-    iJuicee public Juice;
+    iCurrency public Currency;
 
     // Contrusuctor
     constructor(string memory _initBaseURI) ERC721("TokenName", "TKN") {
@@ -121,7 +121,7 @@ contract Two is ERC721Enumerable, Ownable {
     // Override functions of Transer and SafeTransfer
     function transferFrom(address from, address to, uint256 tokenId) public override {
         if (tokenId < maxSupply) {
-            //Juice.updateReward(from, to);
+            //Currency.updateReward(from, to);
             //balanceOfTheChosenOne[from]--;
             //balanceOfTheChosenOne[to]++;
         }
@@ -130,7 +130,7 @@ contract Two is ERC721Enumerable, Ownable {
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public override {
         if (tokenId < maxSupply) {
-            //Juice.updateReward(from, to);
+            //Currency.updateReward(from, to);
             //balanceOfTheChosenOne[from]--;
             //balanceOfTheChosenOne[to]++;
         }
@@ -139,8 +139,8 @@ contract Two is ERC721Enumerable, Ownable {
 
     // ONLY OWNER FUNCTIONS
 
-    function setLemonJuiceMachine(address _juiceAddress) external onlyOwner {
-        Juice = iJuicee(_juiceAddress);
+    function setLemonCurrencyMachine(address _CurrencyAddress) external onlyOwner {
+        Currency = iCurrency(_CurrencyAddress);
     }
 
     // Set the limit to mint per address in whitelist

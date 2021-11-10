@@ -8,11 +8,11 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
-interface iLemonToken { 
+interface iNftToken { 
   function balanceOf(address owner) external view returns (uint256);
 }
 
-interface iLemonGenesis {
+interface iGenToken {
   function balanceOf(address owner) external view returns (uint256);
 }
 
@@ -22,27 +22,25 @@ contract Three is ERC20, Ownable, ERC20Burnable {
     uint256 public constant BASE_RATE_OP = 6 ether;
     uint256 public START;
     // bool
-    bool public pauseJuiceMachine = false;
+    bool public pauseCurrencyMachine = false;
     // mapping
     mapping(address => uint256) public rewards;
     mapping(address => uint256) public lastUpdate;
     // address
-    //address lemmysAddress;
-    //address genesisAddress;
 
-    iLemonToken public lemonToken;
-    iLemonGenesis public lemonGenesis;
+    iNftToken public nftToken;
+    iGenToken public nftGen;
 
-    constructor(address lemonTokenAddress) ERC20("TokenName", "TKN") {
-        lemonToken = iLemonToken(lemonTokenAddress); // necesito el address del contract de LemonToken
+    constructor(address nftTokenAddress) ERC20("TokenName", "TKN") {
+        nftToken = iNftToken(nftTokenAddress); // necesito el address del contract de nftToken
         START = block.timestamp; // Arranca cuando se sube el contrato
     }
 
     // Updates rewards when transfering
     function updateReward(address from, address to) external {
         require(
-            msg.sender == address(lemonToken) ||
-                msg.sender == address(lemonGenesis)
+            msg.sender == address(nftToken) ||
+                msg.sender == address(nftGen)
         );
         if (from != address(0)) {
             rewards[from] += getPendingReward(from);
@@ -56,7 +54,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
 
     // Claim-Reward for the Nomrmal Collection
     function claimNormalReward() external {
-        require(!pauseJuiceMachine, "Claiming reward has been paused");
+        require(!pauseCurrencyMachine, "Claiming reward has been paused");
         _mint(msg.sender, rewards[msg.sender] + getPendingReward(msg.sender));
         rewards[msg.sender] = 0;
         lastUpdate[msg.sender] = block.timestamp;
@@ -64,7 +62,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
 
     // Claim-Reward for the Genesis Collection
     function claimGenReward() external {
-        require(!pauseJuiceMachine, "Claiming reward has been paused");
+        require(!pauseCurrencyMachine, "Claiming reward has been paused");
         _mint(
             msg.sender,
             rewards[msg.sender] + getPendingRewardGen(msg.sender)
@@ -77,7 +75,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
     // Each function has a different Rate => BASE_RATE and BASE_RATE_OP
     function getPendingReward(address user) internal view returns (uint256) {
         return
-            (lemonToken.balanceOf(user) *
+            (nftToken.balanceOf(user) *
                 BASE_RATE *
                 (block.timestamp -
                     (lastUpdate[user] >= START ? lastUpdate[user] : START))) /
@@ -86,7 +84,7 @@ contract Three is ERC20, Ownable, ERC20Burnable {
 
     function getPendingRewardGen(address user) internal view returns (uint256) {
         return
-            (lemonGenesis.balanceOf(user) *
+            (nftGen.balanceOf(user) *
                 BASE_RATE_OP *
                 (block.timestamp -
                     (lastUpdate[user] >= START ? lastUpdate[user] : START))) /
@@ -113,16 +111,16 @@ contract Three is ERC20, Ownable, ERC20Burnable {
         return rewards[user] + getPendingRewardGen(user);
     }
 
-    // ToggleReward the $JUICE
+    // ToggleReward the $CURRENCY
     // Pause the production of tokens
     function toggleReward() public onlyOwner {
-        pauseJuiceMachine = !pauseJuiceMachine;
+        pauseCurrencyMachine = !pauseCurrencyMachine;
     }
 
     // @dev function to set the contract address for the Genesis
     // @param the contract for Genesis
     /// Where are the Genesis? Nobody knows...
     function setGenContractAddress(address _newGenAddress) public onlyOwner {
-        lemonGenesis = iLemonGenesis(_newGenAddress);
+        nftGen = iGenToken(_newGenAddress);
     }
 }

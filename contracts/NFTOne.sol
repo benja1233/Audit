@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 
-interface IJuice {
+interface iCurrency {
     function burn(address _from, uint256 _amount) external;
     
     function updateReward(address _from, address _to) external;
@@ -32,11 +32,11 @@ contract One is ERC721Enumerable, Ownable {
     bool public teamAllocation = true;
 
     address[] public whitelistedAddresses;
-    address juiceAdress;
+    address currencyAddress;
 
     mapping(address => uint256) public addressMintedBalance;
 
-    IJuice public Juice;
+    iCurrency public Currency;
 
     constructor(string memory _initBaseURI, string memory _initNotRevealedUri)
         ERC721("TokenName", "TKN")
@@ -158,14 +158,14 @@ contract One is ERC721Enumerable, Ownable {
     // Override the functions of Transfer and SafeTransfer
     function transferFrom(address from, address to, uint256 tokenId) public override {
         if (tokenId < maxSupply) {
-            //Juice.updateReward(from, to);
+            //Currency.updateReward(from, to);
         }
         ERC721.transferFrom(from, to, tokenId);
     }
 
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public override {
         if (tokenId < maxSupply) {
-            //Juice.updateReward(from, to);
+            //Currency.updateReward(from, to);
         }
         ERC721.safeTransferFrom(from, to, tokenId, data);
     }
@@ -183,9 +183,9 @@ contract One is ERC721Enumerable, Ownable {
         }
     }    
 
-    // Sets the contractc of $JUICE
-    function setLemonJuiceMachine(address _juiceAddress) external onlyOwner {
-        Juice = IJuice(_juiceAddress);
+    // Sets the contractc of $Currency
+    function setLemonCurrencyMachine(address _CurrencyAddress) external onlyOwner {
+        Currency = iCurrency(_CurrencyAddress);
     }
 
     // Reveal function => Cambiarlo de false a true
