@@ -28,8 +28,8 @@ describe("Two contract", () => {
         // Wallet Mint Limit 
         it("owner will not be able to mint because exceeds the amount permited per wallet", async function () {
             await genesis.getYourOGNFTs(1);
-            await genesis.transferFrom("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", "0x70997970C51812dc3A010C7d01b50e0d17dc79C8", 0);
-            expect(await genesis.balanceOf("0x70997970C51812dc3A010C7d01b50e0d17dc79C8")).to.equal(1);
+            await genesis.transferFrom(ownerAddress, guestAddress, 0);
+            expect(await genesis.balanceOf(guestAddress)).to.equal(1);
             await expect(genesis.getYourOGNFTs(1)).to.be.reverted;
         })
 
