@@ -1,8 +1,8 @@
 # NFTs Audit
 
 # Stack 
-    - **Solidity**
-    - **Hardhat**
+    - ** Solidity **
+    - ** Hardhat **
     - **Ethers.js**
     - **Web3.js**
 
