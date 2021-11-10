@@ -5,13 +5,15 @@ const assert = require("chai").assert;
 
 describe("One contract", () => {
     let Token, token, owner, addr1, addr2, provider;
+    let ownerAddress = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+    let guestAddress = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
 
     beforeEach(async () => {
         Token =  await ethers.getContractFactory("One");
         [owner, addr1, addr2, _] = await ethers.getSigners();
         token = await Token.deploy("h", "f");
         await token.deployed();
-        //console.log(`LemonToken deployed to: ${token.address}`);
+        //console.log(`NFTOne deployed to: ${token.address}`);
         //console.log(owner.address);
         //console.log(addr1.address);
     })
@@ -42,13 +44,13 @@ describe("One contract", () => {
       // WL test
       it("owner will be able to mint because is whiteListed is false", async function () {
         await token.setOnlyWhitelisted(false);
-        await token.mint(1); // mintear para el owner
+        await token.mint(1); // mint for owner
         expect(await token.balanceOf("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")).to.equal(1);
       });
       // WL test
       it("owner will be able to mint because is whiteListed", async function () {
         await token.whitelistUsers(["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"]);
-        await token.mint(1); // mintear para el owner
+        await token.mint(1); // mint for owner
         expect(await token.balanceOf("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")).to.equal(1);
       })
       // Wl test
@@ -89,8 +91,8 @@ describe("One contract", () => {
     });
 
     // Burning and minting Test
-    describe("Bruning a Lemmy", () => {
-      it("should burn a lemmy and then when trying to mint it shouldnt let you", async function () {
+    describe("Bruning a NFT", () => {
+      it("should burn a NFT and then when trying to mint it shouldnt let you", async function () {
         await token.whitelistUsers(["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"]);
         await token.mint(1);
         expect(await token.balanceOf("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")).to.equal(1);
@@ -100,14 +102,4 @@ describe("One contract", () => {
       })
     })
 
-    /*
-    describe("Trying to run every onlyOwner function as a guest", () => {
-      it("shouldnt let the guest run any of these functions", async function () {
-        await token.whitelistUsers(["0x70997970C51812dc3A010C7d01b50e0d17dc79C8"]);
-        expect(await token.isWhitelisted("0x70997970C51812dc3A010C7d01b50e0d17dc79C8")).to.equal(true);
-        await token.connect(addr1.mint(1));
-        expect(await token.balanceOf("0x70997970C51812dc3A010C7d01b50e0d17dc79C8")).to.equal(0);
-      })
-    })
-    */
 })
