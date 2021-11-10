@@ -730,45 +730,6 @@
         "iJuicee"
       ]
     },
-    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/LemonUtility.sol": {
-      "lastModificationDate": 1636403303184,
-      "contentHash": "8e82cfd4187f7bf3ad444da875503b46",
-      "sourceName": "contracts/LemonUtility.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/access/Ownable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "IJuice2",
-        "ILemonGenesis",
-        "ILemonToken",
-        "LemonUtility"
-      ]
-    },
     "/Users/benjaminsanchezlopez/Desktop/Audit/node_modules/@openzeppelin/contracts/access/Ownable.sol": {
       "lastModificationDate": 1636403378551,
       "contentHash": "4fe56b59ced59d87df6b796758f62895",
@@ -837,44 +798,6 @@
       ],
       "artifacts": [
         "Context"
-      ]
-    },
-    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/Two.sol": {
-      "lastModificationDate": 1636404038364,
-      "contentHash": "e17fcb4ac9f6f6391212a34cdcdcda53",
-      "sourceName": "contracts/Two.sol",
-      "solcConfig": {
-        "version": "0.8.0",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
-        "@openzeppelin/contracts/access/Ownable.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Two",
-        "iJuicee"
       ]
     },
     "/Users/benjaminsanchezlopez/Desktop/Audit/node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
@@ -1381,10 +1304,10 @@
         "IERC20Metadata"
       ]
     },
-    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/Three.sol": {
-      "lastModificationDate": 1636404214365,
-      "contentHash": "bbe4fdfa9db0588df6c715af3dff80ab",
-      "sourceName": "contracts/Three.sol",
+    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/CurrencyToken.sol": {
+      "lastModificationDate": 1636566296373,
+      "contentHash": "ce0f2bb05e0117557373ddfd80b69df4",
+      "sourceName": "contracts/CurrencyToken.sol",
       "solcConfig": {
         "version": "0.8.0",
         "settings": {
@@ -1421,10 +1344,48 @@
         "iLemonToken"
       ]
     },
-    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/One.sol": {
-      "lastModificationDate": 1636404027465,
-      "contentHash": "d44ebb25bf5a4dbeb6a90dac6f574c9f",
-      "sourceName": "contracts/One.sol",
+    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/NFTTwo.sol": {
+      "lastModificationDate": 1636562810936,
+      "contentHash": "4bb7448d503b5033ce14573a182d4792",
+      "sourceName": "contracts/NFTTwo.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol",
+        "@openzeppelin/contracts/access/Ownable.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Two",
+        "iJuicee"
+      ]
+    },
+    "/Users/benjaminsanchezlopez/Desktop/Audit/contracts/NFTOne.sol": {
+      "lastModificationDate": 1636562796829,
+      "contentHash": "c73d7d9015d00aa04d9a1eb0589d6ede",
+      "sourceName": "contracts/NFTOne.sol",
       "solcConfig": {
         "version": "0.8.0",
         "settings": {
