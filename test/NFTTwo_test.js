@@ -5,8 +5,8 @@ const assert = require("chai").assert;
 
 describe("Two contract", () => {
     let Genesis, genesis, owner, addr1, addr2, provider;
-    let ownerAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
-    let guestAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
+    const ownerAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+    const guestAddress = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
 
     beforeEach(async () => {
         Genesis =  await ethers.getContractFactory("Two");
