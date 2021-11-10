@@ -1,7 +1,7 @@
 # NFTs Audit
 
 # Stack 
-    - __Solidity__
+    - *Solidity*
     - ** Hardhat **
     - **Ethers.js**
     - **Web3.js**
@@ -19,7 +19,7 @@ Test => test folder contains 2 tests. NFTOne test and NFTTwo test.
 
 # Background of the project:
 
-## This project consists in the following =>
+## This project consists in the following
     **The first 2 contracts (NFTOne & NFTTwo) are contracts to mint NFTs**, the contract NFTOne will be the main contract to mint 10.000 NFTs and the Contract NFTTwo is to mint the second Generation of NFTs (yet to be decided when but it is complete). 
 
     **The contract NFTOne has more functionalities than the Contract NFTTwo:**
