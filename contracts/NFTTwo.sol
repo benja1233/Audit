@@ -122,8 +122,6 @@ contract Two is ERC721Enumerable, Ownable {
     function transferFrom(address from, address to, uint256 tokenId) public override {
         if (tokenId < maxSupply) {
             //Currency.updateReward(from, to);
-            //balanceOfTheChosenOne[from]--;
-            //balanceOfTheChosenOne[to]++;
         }
         ERC721.transferFrom(from, to, tokenId);
     }
@@ -131,8 +129,6 @@ contract Two is ERC721Enumerable, Ownable {
     function safeTransferFrom(address from, address to, uint256 tokenId, bytes memory data) public override {
         if (tokenId < maxSupply) {
             //Currency.updateReward(from, to);
-            //balanceOfTheChosenOne[from]--;
-            //balanceOfTheChosenOne[to]++;
         }
         ERC721.safeTransferFrom(from, to, tokenId, data);
     }
